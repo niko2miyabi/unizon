@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユニゾンリーグ イベント周回何回周るの？</title>
+    <link rel="stylesheet" href="css/main.css?20220914">
+    <script>
+        (function(d) {
+          var config = {
+            kitId: 'mzk6iws',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+      </script>
+</head>
+<body>
+    <div id="app" class="contents-inner">
+        <h1>ユニゾンリーグ<br>イベント周回計算機</h1>
+        <h2>ユニロックフェスティバル</h2>
+        <div v-on:load="getEventState" v-if="isEvent">
+        <div class="quest-level">
+        <h3>目標の名声数を入力</h3>
+        <input type="text" v-model="totalPoint">
+        <h3>現在の累計獲得名声</h3>
+        <input type="text" v-model.number="myTotalPoint">
+        <h3>自分の特攻倍率</h3>
+        <input type="text" v-model.number="myMagnification">
+        <h3>難易度を選択</h3>
+            <select name="" id="" v-model="selectQuest">
+                <template v-for="(quest, i) in quests">
+                    <option v-bind:id="'num'+ i">{{ quest.name }}</option>
+                </template>
+            </select>
+    </div>
+
+    <div class="result-info">
+        <p v-cloak>＼ 1回の名声数 ／<br><span class="fz-large">{{ oncePoint() }}</span>名声だよ！</p>
+        <p v-cloak>＼ 必要な周回数 ／<br>あと<span class="fz-large">{{ resultCount() }}</span>回！</p>
+        <p v-cloak>＼ 達成までに必要なAP ／<br><span class="fz-large"> {{ resultAp() }}</span>AP！</p>
+        <p v-cloak>＼ 1日の平均ノルマ ／<br>約<span class="fz-large">{{ norma() }}</span>回！<span class="ap">※必要:{{ dayAp() }}<span>AP</span></span></p>
+    </div>
+</div>
+    <div v-else class="event-end">
+        <p>イベントお疲れさまー！( ✌︎'ω')✌︎<br>次回更新未定</p>
+    </div>
+    <footer>
+        <!-- <p><a href="https://twitter.com/niko2miyabi" target="_blank">不具合等はこちらまで @niko2miyabi</a></p> -->
+    </footer>
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+  <script src="js/main.js?20220914"></script>
+
+</body>
+</html>
