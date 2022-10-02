@@ -8,13 +8,13 @@ const app = Vue.createApp({
         mustDayAp: 0,
         isEvent: true,
         quests: [
-            { name: '熟練', ap: 30, basePoint: 35},
-            { name: '精鋭', ap: 40, basePoint: 75},
-            { name: '天上', ap: 55, basePoint: 200},
-            { name: '修羅', ap: 65, basePoint: 350},
-            { name: '極', ap: 65, basePoint:  500}
+            { name: '駆け出し', ap: 20, basePoint: 40},
+            { name: '熟練', ap: 30, basePoint: 80},
+            { name: '精鋭', ap: 40, basePoint: 170},
+            { name: '天上', ap: 55, basePoint: 350},
+            { name: '修羅', ap: 65, basePoint:  600}
         ],
-        selectQuest: '極'
+        selectQuest: '修羅'
     }),
     computed: {
         getEventState: function () {
