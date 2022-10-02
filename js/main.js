@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data: () => ({
-        totalPoint: 150000,
-        basePoint: 500, //イベント無特攻の場合のベース値
+        totalPoint: 500000,
+        basePoint: 600, //イベント無特攻の場合のベース値
         myMagnification: 1.0,
         myTotalPoint: 0,
         baseAp: 65,
@@ -24,7 +24,7 @@ const app = Vue.createApp({
     methods: {
         getDay: function () {
             const toDay = new Date()
-            const eventEndDay = new Date('2022/09/30 23:59:59')
+            const eventEndDay = new Date('2022/10/19 13:59:59')
             const isEventEnd = toDay <= eventEndDay
             return { toDay, eventEndDay, isEventEnd }
         },
