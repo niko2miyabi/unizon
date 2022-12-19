@@ -1,0 +1,274 @@
+$sp:'screen and (max-width: 768px)';
+$pc:'screen and (min-width: 769px)';
+$pcmax:'screen and (min-width: 1000px)';
+
+// font size
+@function sp($size, $viewport:375){
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+@mixin sp($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: sp($font_size);
+}
+
+@function fz_vw_pc($size, $viewport:1000){
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+@mixin fz_vw_pc($font_size:10){
+  font-size: $font_size * 1px;
+  font-size: fz_vw_pc($font_size);
+}
+
+[v-cloak] {
+    display: none;
+}
+body * {
+    color: #000;
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+}
+body{
+    background-image: url(../img/bg.png);
+    background-repeat : no-repeat;
+    background-size: cover;
+    font-family: source-han-sans-japanese, sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+.contents-inner{
+  background-color: rgba(255,255,255,0.9);
+    max-width: 768px;
+    height: 100%;
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    overflow: hidden;
+    text-align: center;
+}
+
+//header
+header{
+  h1{
+    text-align: center;
+    margin: 0 auto 0;
+    color: #ffffff;
+    font-size: 20px;
+    background: #000;
+    @include sp(10);
+    padding: 1.5% 0;
+      @media #{$pc}{
+        font-size: 20px
+  }
+  }
+  .quest-inner{
+    width: 92%;
+    margin: 0 auto 5%;
+    h2{
+      color:#000;
+      text-align: center;
+      display: block;
+      position: relative;
+      @include sp(12);
+      line-height: 1;
+      @media #{$pc}{
+        font-size: 24px
+      }
+      &:before, &:after{
+        content:"";
+        display: block;
+        height: 2px;
+        background: #000;
+        width: 35%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      &:before{
+        left: 0;
+      }
+      &:after{
+        right: 0;
+      }
+    }
+    //バナー
+    .bnr-quest{
+      margin: 0 auto;
+      border: solid 2px #000;
+      box-sizing: border-box;
+      img{
+        width: 100%;
+        height: auto;
+        vertical-align: bottom;
+      }
+    }
+    //期間
+    .period-quest{
+      @include sp(12);
+      font-weight: bold;
+      line-height: 1;
+      @media #{$pc}{
+        font-size: 24px
+      }
+    }
+  }
+}
+
+.quest-level{
+  width: 92%;
+    margin: 0 auto;
+    padding: 0 0 0;
+    background-color: #ffffff;
+    border: solid 2px #000;
+  box-sizing: border-box;
+  h2{
+    color: #ffffff;
+    background-color: #000;
+    @include sp(10);
+    padding: 1.5% 0 2.0%;
+    line-height: 1;
+    margin: 0;
+    @media #{$pc}{
+      font-size: 20px
+    }
+  }
+  > div{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 1px #ccc;
+    padding: 0 4%;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  h3{
+    width: 30%;
+    line-height: 1;
+    font-weight: normal;
+    @include sp(11);
+    font-weight: bold;
+    text-align: right;
+    padding-right: 2%;
+    box-sizing: border-box;
+    padding: 3% 1%;
+    height: 100%;
+    @media #{$pc}{
+      font-size: 22px
+    }
+  }
+}
+.quest-level select {
+  width: 68%;
+  padding: 1.5% 1%;
+    box-sizing: border-box;
+    outline: none;
+    border: solid 1px #aaa;
+    border-radius: 3px;
+    text-align: center;
+    font-family: inherit;
+    appearance: none;
+  background-color: #ffffff;
+  @include sp(12);
+  font-weight: bold;
+  @media #{$pc}{
+    font-size: 24px
+  }
+}
+.quest-level input {
+  width: 68%;
+  padding: 1.5% 1%;
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+    border: solid 1px #aaa;
+    border-radius: 3px;
+    text-align: center;
+    font-family: inherit;
+  @include sp(12);
+  font-weight: bold;
+  @media #{$pc}{
+    font-size: 24px
+  }
+}
+.quest-level select + h3,
+.quest-level input + h3{
+    margin-top: 10px;
+}
+
+//結果
+.result-info{
+    margin: 20px auto 60px;
+    border: solid #000 2px;
+  background-color: #fff;
+  width: 92%;
+  box-sizing: border-box;
+
+  h2{
+    color: #ffffff;
+    background-color: #000;
+    margin: 0;
+    @include sp(11);
+    font-weight: bold;
+    padding: 1.5% 0 2.0%;
+    line-height: 1;
+    margin-bottom: 3%;
+    @media #{$pc}{
+      font-size: 22px
+    }
+  }
+}
+.result-info p{
+  border-bottom: solid 1px #ccc;
+    line-height: 1.5;
+  color: #333;
+  @include sp(11);
+  font-weight: bold;
+  margin: 0;
+  @media #{$pc}{
+    font-size: 22px
+  }
+  &:last-child{
+    border-bottom: none;
+    padding-bottom: 2%;
+  }
+}
+.result-info p .fz-large{
+    font-weight: bold;
+    font-size: 30px;
+    color:red;
+  @include sp(20);
+  padding: 0 1.5%;
+  @media #{$pc}{
+    font-size: 40px
+  }
+
+}
+.result-info p + p{
+    margin-top: 10px;
+}
+.result-info .ap{
+    font-size: 14px;
+    display: block;
+
+}
+.result-info .ap span{
+    font-size: 10px;
+}
+.event-end{
+    height: 80vh;
+    font-size: 14px;
+    line-height: 1.5;
+}
+footer p a{
+    font-size: 10px;
+    text-decoration: underline;
+    color:saddlebrown;
+}

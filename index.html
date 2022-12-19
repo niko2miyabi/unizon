@@ -6,38 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ユニゾンリーグ イベント周回何回周るの？</title>
     <link rel="stylesheet" href="css/main.css?20220914">
-    <script>
-        (function(d) {
-          var config = {
-            kitId: 'mzk6iws',
-            scriptTimeout: 3500,
-            async: true
-          },
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'vko4tdr',
+        scriptTimeout: 3000,
+        async: true
+      },
           h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-        })(document);
-      </script>
+    })(document);
+  </script>
 </head>
 <body>
     <div id="app" class="contents-inner">
-        <h1>ユニゾンリーグ<br>イベント周回計算機</h1>
-        <h2>目指せ! No.1 ミンチューバー！</h2>
+        <header>
+          <h1>ユニゾンリーグ『イベント周回計算機』</h1>
+          <div class="quest-inner">
+            <h2>対象イベント</h2>
+            <p class="bnr-quest"><img src="img/bnr_quest.png" alt=""></p>
+            <p class="period-quest">イベント開催期間：12月28日(水) 13:59まで</p>
+          </div>
+        </header>
         <div v-on:load="getEventState" v-if="isEvent">
         <div class="quest-level">
-        <h3>目標の名声数を入力</h3>
-        <input type="text" v-model="totalPoint">
-        <h3>現在の累計獲得名声</h3>
-        <input type="text" v-model.number="myTotalPoint">
-        <h3>自分の特攻倍率</h3>
-        <input type="text" v-model.number="myMagnification">
-        <h3>難易度を選択</h3>
-            <select name="" id="" v-model="selectQuest">
-                <template v-for="(quest, i) in quests">
-                    <option v-bind:id="'num'+ i">{{ quest.name }}</option>
-                </template>
-            </select>
+        <h2>データ入力欄</h2>
+        <div>
+          <h3>目標の名声数：</h3>
+          <input type="text" v-model="totalPoint">
+        </div>
+        <div>
+          <h3>現在の名声数：</h3>
+          <input type="text" v-model.number="myTotalPoint">
+        </div>
+        <div>
+          <h3>特攻倍率：</h3>
+          <input type="text" v-model.number="myMagnification">
+        </div>
+        <div>
+          <h3>難易度：</h3>
+          <select name="" id="" v-model="selectQuest">
+            <template v-for="(quest, i) in quests">
+              <option v-bind:id="'num'+ i">{{ quest.name }}</option>
+            </template>
+          </select>
+        </div>
     </div>
 
     <div class="result-info">
+       <h2>計算結果</h2>
         <p v-cloak>＼ 1回の名声数 ／<br><span class="fz-large">{{ oncePoint() }}</span>名声だよ！</p>
         <p v-cloak>＼ 必要な周回数 ／<br>あと<span class="fz-large">{{ resultCount() }}</span>回！</p>
         <p v-cloak>＼ 達成までに必要なAP ／<br><span class="fz-large"> {{ resultAp() }}</span>AP！</p>
@@ -51,7 +67,9 @@
         <!-- <p><a href="https://twitter.com/niko2miyabi" target="_blank">不具合等はこちらまで @niko2miyabi</a></p> -->
     </footer>
     </div>
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script src="js/jquery.cookie.js"></script>
   <script src="js/main.js?20220914"></script>
 
 </body>
