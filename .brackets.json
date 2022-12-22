@@ -1,0 +1,12 @@
+{
+  "path": {
+    "*.scss": {
+      "sass.enabled": true,
+      "sass.options": {
+        "sourceComments": false
+      },
+      "fonts.fontSize": "13px",
+      "linting.collapsed": false
+    }
+  }
+}

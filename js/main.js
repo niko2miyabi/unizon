@@ -1,17 +1,26 @@
+
+//cookie
+const getCookie = (name) => {
+  return $.cookie(name);
+}
+const setCookie = (name, val) => {
+  $.cookie(name, val,{expires:14, path:'/'});
+}
 const app = Vue.createApp({
     data: () => ({
-        totalPoint: 230000,
-        basePoint: 500, //イベント無特攻の場合のベース値
-        myMagnification: 1.0,
-        myTotalPoint: 0,
+        totalPoint: 200000,
+        basePoint: 600, //イベント無特攻の場合のベース値
+      myMagnification: (getCookie("magnification"))? getCookie("magnification") : 1.0, //cookieなかったら1.0
+      myTotalPoint:  (getCookie("totalPoint"))? getCookie("totalPoint") : 0, //cookieなかったら0
         baseAp: 65,
         mustDayAp: 0,
         isEvent: true,
         quests: [
-            { name: '熟練', ap: 30, basePoint: 90},
-            { name: '精鋭', ap: 40, basePoint: 200},
-            { name: '天上', ap: 55, basePoint: 400},
-            { name: '修羅', ap: 65, basePoint:  680}
+            { name: '駆け出し', ap: 20, basePoint: 40},
+            { name: '熟練', ap: 30, basePoint: 80},
+            { name: '精鋭', ap: 40, basePoint: 170},
+            { name: '天上', ap: 55, basePoint: 350},
+            { name: '修羅', ap: 65, basePoint:  600}
         ],
         selectQuest: '修羅'
     }),
@@ -23,7 +32,7 @@ const app = Vue.createApp({
     methods: {
         getDay: function () {
             const toDay = new Date()
-            const eventEndDay = new Date('2022/12/07 13:59:59')
+            const eventEndDay = new Date('2022/12/28 13:59:59')
             const isEventEnd = toDay <= eventEndDay
             return { toDay, eventEndDay, isEventEnd }
         },
@@ -38,6 +47,8 @@ const app = Vue.createApp({
             if(this.myMagnification === 0 || this.myMagnification === '') return '?'
             const getQuestObj =  this.selectedQuests()
             const getPoint =  getQuestObj.basePoint * this.myMagnification
+            if(getCookie("magnification") !== this.myMagnification) setCookie('magnification',this.myMagnification)
+          if(getCookie("totalPoint") !== this.myTotalPoint) setCookie('totalPoint',this.myTotalPoint)
             return  Math.ceil((this.totalPoint - this.myTotalPoint) / getPoint)
         },
         resultAp: function () {
@@ -66,6 +77,4 @@ const app = Vue.createApp({
         }
     }
 });
-
-
 app.mount('#app');
