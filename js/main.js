@@ -9,7 +9,7 @@ const setCookie = (name, val) => {
 const app = Vue.createApp({
     data: () => ({
         totalPoint: 200000,
-        basePoint: 600, //イベント無特攻の場合のベース値
+        basePoint: 800, //イベント無特攻の場合のベース値
       myMagnification: (getCookie("magnification"))? getCookie("magnification") : 1.0, //cookieなかったら1.0
       myTotalPoint:  (getCookie("totalPoint"))? getCookie("totalPoint") : 0, //cookieなかったら0
         baseAp: 65,
@@ -20,9 +20,10 @@ const app = Vue.createApp({
             { name: '熟練', ap: 30, basePoint: 80},
             { name: '精鋭', ap: 40, basePoint: 170},
             { name: '天上', ap: 55, basePoint: 350},
-            { name: '修羅', ap: 65, basePoint:  600}
+            { name: '修羅', ap: 65, basePoint:  600},
+            { name: '極', ap: 65, basePoint:  800}
         ],
-        selectQuest: '修羅'
+      selectQuest: '極'
     }),
     computed: {
         getEventState: function () {
